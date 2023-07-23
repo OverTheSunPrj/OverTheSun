@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <title>Over The Sun - iFrame</title>
-    <script src="https://cdn.jsdelivr.net/npm/phaser@3.15.1/dist/phaser-arcade-physics.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.24.1/dist/phaser-arcade-physics.min.js"></script>
     <style>
         *{
             border: none;
@@ -14,10 +14,18 @@
 </head>
 <body>
     <script>
+    const url = new URL(window.location.href);
+    const width = Number.parseInt(url.searchParams.get("width"));
+    const height = Number.parseInt(url.searchParams.get("height"))
+    console.log(width);
+
     var config = {
         type: Phaser.WEBGL,
-        width: 1920,
-        height: 1080,
+        width,
+        height,
+        scale: {
+            mode: Phaser.Scale.FIT
+        },
         physics: {
             default: 'arcade',
             arcade: {
